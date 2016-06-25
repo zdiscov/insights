@@ -1,0 +1,24 @@
+<script type="text/javascript" src="https://assets.zendesk.com/apps/sdk/1.0/zaf_sdk.js"></script>
+<script>
+  var app = window.ZAFClient.init();
+
+  app.postMessage('hello', { foo: true }); // post the message 'hello' to the Zendesk app
+
+  // listen to the 'app.registered' event, which is fired by the framework once the iframe is registered with the app
+  app.on('app.registered', function(data) {
+    // go nuts
+  });
+
+  app.on('helloIframe', function(data) { // listen to the 'helloIframe' message sent from the app
+    if (data.bar) {
+      // app says hello
+    }
+  });
+</script>
+<!doctype html>
+<title>Jello from Flask</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+{% else %}
+  <h1>Hello World!</h1>
+{% endif %}
